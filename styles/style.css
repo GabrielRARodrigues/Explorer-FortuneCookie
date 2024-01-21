@@ -1,0 +1,227 @@
+:root {
+  /** Color Variables **/
+
+  /* Base Color */
+  --base-color: #ffffff;
+
+  /* Background Colors */
+  --bg-color: linear-gradient(45deg, #190361 0%, #b0f 100%);
+  --button-bg-color: #ff9500;
+  --cookie-message-bg-color: #e4edf1;
+
+  /* Text Colors */
+  --text-color: #34355b;
+  --cookie-message-text-color: #000000;
+
+  /** Font Variables **/
+
+  /* Font Families */
+  --primary-font-family: 'Montserrat', sans-serif;
+  --secondary-font-family: 'DM Sans', sans-serif;
+  --cookie-message-font-family: 'Dancing Script', cursive;
+
+  /* Font Sizes */
+  --sm-font-size: 1.5rem;
+  --md-font-size: 1.6rem;
+  --lg-font-size: 2.4rem;
+
+  /* Font Weights */
+  --regular-font-weight: 400;
+  --bold-font-weight: 700;
+
+  /* Box Shadow Variable */
+  --card-box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.8);
+  --cookie-message-box-shadow: 2px 2px 2px 0px rgba(85, 85, 85, 0.5);
+
+  font-size: 62.5%;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+body {
+  height: 100vh;
+
+  background: var(--bg-color);
+  background-size: 200% 200%;
+
+  font-family: var(--primary-font-family);
+  font-size: 1.6rem;
+  font-weight: var(--regular-font-weight);
+  color: var(--text-color);
+
+  animation: gradient 10s ease infinite;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+
+  place-items: center;
+}
+
+#app[data-cookie-is-open] .text,
+#app:not([data-cookie-is-open]) .fortune-cookie__message,
+#app:not([data-cookie-is-open]) .fortune-cookie__button {
+  display: none;
+}
+
+#app[data-cookie-is-open] .fortune-cookie__image-container {
+  padding-block: 4.2rem;
+}
+
+#app[data-cookie-is-open] .fortune-cookie__image-container {
+  cursor: default;
+}
+
+#app:not([data-cookie-is-open]) .fortune-cookie__image-container:hover {
+  animation: shake 750ms infinite;
+}
+
+.main {
+  max-width: 43rem;
+  padding: 4.8rem 6.4rem;
+
+  border-radius: 0.4rem;
+  background-color: var(--base-color);
+  box-shadow: var(--card-box-shadow);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+
+  text-align: center;
+}
+
+.title {
+  font-size: var(--lg-font-size);
+  font-weight: var(--bold-font-weight);
+}
+
+.text {
+  margin-bottom: 1rem;
+
+  font-family: var(--secondary-font-family);
+  font-size: var(--sm-font-size);
+}
+
+.fortune-cookie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
+.fortune-cookie__message {
+  padding: 1rem;
+
+  background-color: var(--cookie-message-bg-color);
+  box-shadow: var(--cookie-message-box-shadow);
+
+  position: relative;
+
+  font-family: var(--cookie-message-font-family);
+  font-size: var(--lg-font-size);
+  color: var(--cookie-message-text-color);
+
+  animation: zoom 1.75s backwards ease-out;
+}
+
+.fortune-cookie__image-container {
+  border: 0;
+  background: none;
+}
+
+.fortune-cookie__button {
+  padding: 1.6rem;
+
+  border: 0;
+  border-radius: 0.4rem;
+  background-color: var(--button-bg-color);
+
+  font-family: var(--secondary-font-family);
+  font-size: var(--sm-font-size);
+  font-weight: var(--bold-font-weight);
+  color: var(--base-color);
+
+  transition: all 200ms;
+}
+
+.fortune-cookie__button:hover {
+  filter: brightness(0.8);
+}
+
+/* animations */
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@keyframes zoom {
+  0% {
+    scale: 0.1;
+    top: 17.5rem;
+  }
+
+  100% {
+    scale: 1;
+    top: 0;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
